@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Verify') {
            steps {
-               println 'aca va el verify'
+               sh './verify.sh'
            }
            post{
                always{
