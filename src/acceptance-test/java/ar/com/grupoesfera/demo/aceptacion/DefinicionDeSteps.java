@@ -25,7 +25,7 @@ public class DefinicionDeSteps {
 			given()
 				.body(cliente)
 				.contentType(ContentType.JSON).
-			delete("http://10.10.34.79:8080/clients/v1.0").
+			delete("http://10.26.160.25:8080/clients/v1.0").
 			then()
 				.statusCode(HttpStatus.SC_OK);
 		}
