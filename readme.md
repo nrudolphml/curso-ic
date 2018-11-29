@@ -8,6 +8,8 @@
 
 ### Para ejecutarlo
 
+Editar application-ic.properties, poner la ip de la máquina de cada uno (Esto es un workaround si no se posee un servidor de base de datos)
+
 Levantar sql server
 
 ```sh
@@ -28,24 +30,16 @@ Levantar redis
 $ docker run --name some-redis -p 6379:6379 -d redis
 ```
 
-Editar application-ic.properties, poner la ip de la máquina de cada uno (Esto es un workaround si no se posee un servidor de base de datos)
-
-Para compilar la imagen
-
-```sh
-$ ./gradlew -DapiName=curso-ic buildImage
-```
-
 Actualizar la base de datos
 
 ```sh
 $ ./gradlew flywayMigrate
 ```
 
-Para levantar la imagen con el perfil ic
+Para ejecutar el proyecto hay que pararse en el folder root del proyecto
 
 ```sh
-$ docker run --name curso -e JAVA_OPTS="-Dspring.profiles.active=ic" -p 8080:8080 -d curso-ic:0.0.1-SNAPSHOT
+$ ./gradlew bootRun
 ```
 
 Para correr las pruebas de integración
@@ -54,10 +48,16 @@ Para correr las pruebas de integración
 $ ./gradlew clean verify
 ```
 
-Para ejecutar el proyecto hay que pararse en el folder root del proyecto
+Para compilar la imagen
 
 ```sh
-$ ./gradlew bootRun
+$ ./gradlew -DapiName=curso-ic buildImage
+```
+
+Para levantar la imagen con el perfil ic
+
+```sh
+$ docker run --name curso -e JAVA_OPTS="-Dspring.profiles.active=ic" -p 8080:8080 -d curso-ic:0.0.1-SNAPSHOT
 ```
 
    [Docker]: <https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements>
