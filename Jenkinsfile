@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy') {
           steps {
-              println 'aca va el deploy'
+              sh './deploy.sh'
           }
         }
         stage('Verify') {
